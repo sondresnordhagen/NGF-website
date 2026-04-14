@@ -36,6 +36,16 @@
     .social-links a:hover { color: var(--navy); }
     .header-cta { background: var(--accent); color: #fff; font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 9px 18px; border-radius: 4px; white-space: nowrap; transition: background 0.2s; }
     .header-cta:hover { background: var(--accent-h); color: #fff; }
+    .lang-switch { position: relative; }
+    .lang-btn { background: transparent; border: 1.5px solid var(--gray-line); color: var(--navy); font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; padding: 8px 12px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 5px; white-space: nowrap; font-family: inherit; transition: border-color 0.2s, background 0.2s; }
+    .lang-btn:hover { border-color: var(--navy); background: var(--gray-bg); }
+    .lang-btn svg { transition: transform 0.2s; }
+    .lang-switch.open .lang-btn svg { transform: rotate(180deg); }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 6px); right: 0; background: var(--white); border: 1px solid var(--gray-line); border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); min-width: 80px; z-index: 200; }
+    .lang-switch.open .lang-dropdown { display: block; }
+    .lang-dropdown a { display: block; padding: 10px 16px; font-size: 13px; font-weight: 600; color: var(--muted); transition: background 0.15s, color 0.15s; }
+    .lang-dropdown a:hover { background: var(--gray-bg); color: var(--navy); }
+    .lang-dropdown a.active { color: var(--navy); font-weight: 700; }
 
     /* PAGE HERO */
     .page-hero { position: relative; background: url('event.jpg') center center / cover no-repeat; padding: 72px 24px 64px; }
@@ -145,11 +155,12 @@
 
   <header>
     <div class="header-inner">
-      <a href="NGF.html" class="logo">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="NGF" style="height:32px; width:auto; display:block;">
         Neste Generasjons <span>Forsikringsformidlere</span>
       </a>
       <nav>
-        <a href="NGF.html">Hjem</a>
+        <a href="index.html">Hjem</a>
         <a href="om.html">Om</a>
         <a href="eventer.html" class="active">Eventer</a>
         <a href="arkiv.html">Arkiv</a>
@@ -166,8 +177,22 @@
         </a>
       </div>
       <a href="meld-deg-pa.html" class="header-cta">Meld deg på</a>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" onclick="toggleLang()">
+          NO
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 5 7 9 3"/></svg>
+        </button>
+        <div class="lang-dropdown">
+          <a href="eventer.html" class="active">NO</a>
+          <a href="eventer-en.html">ENG</a>
+        </div>
+      </div>
     </div>
   </header>
+  <script>
+    function toggleLang() { document.getElementById('langSwitch').classList.toggle('open'); }
+    document.addEventListener('click', function(e) { var sw = document.getElementById('langSwitch'); if (!sw.contains(e.target)) sw.classList.remove('open'); });
+  </script>
 
   <!-- PAGE HERO -->
   <section class="page-hero">
@@ -191,7 +216,45 @@
             <div class="month">Mai</div>
           </div>
           <div class="event-info">
-            <h3>Afterwork, Første Samling</h3>
+            <h3>Afterwork</h3>
+            <p>Stikk innom etter jobb og møt gamle og nye bekjentskaper. Ingen agenda, bare god stemning og gode samtaler. Vi gleder oss til å se deg!</p>
+            <div class="event-tags">
+              <span class="event-tag type">Afterwork</span>
+              <span class="event-tag">Oslo</span>
+              <span class="event-tag">Torsdag</span>
+            </div>
+          </div>
+          <div class="event-cta">
+            <a href="meld-deg-pa.html" class="btn">Meld deg på</a>
+          </div>
+        </div>
+
+        <div class="event-row">
+          <div class="event-date-block">
+            <div class="day">20</div>
+            <div class="month">Aug</div>
+          </div>
+          <div class="event-info">
+            <h3>Afterwork</h3>
+            <p>Stikk innom etter jobb og møt gamle og nye bekjentskaper. Ingen agenda, bare god stemning og gode samtaler. Vi gleder oss til å se deg!</p>
+            <div class="event-tags">
+              <span class="event-tag type">Afterwork</span>
+              <span class="event-tag">Oslo</span>
+              <span class="event-tag">Torsdag</span>
+            </div>
+          </div>
+          <div class="event-cta">
+            <a href="meld-deg-pa.html" class="btn">Meld deg på</a>
+          </div>
+        </div>
+
+        <div class="event-row">
+          <div class="event-date-block">
+            <div class="day">23</div>
+            <div class="month">Okt</div>
+          </div>
+          <div class="event-info">
+            <h3>Afterwork</h3>
             <p>Stikk innom etter jobb og møt gamle og nye bekjentskaper. Ingen agenda, bare god stemning og gode samtaler. Vi gleder oss til å se deg!</p>
             <div class="event-tags">
               <span class="event-tag type">Afterwork</span>
@@ -235,7 +298,7 @@
       <div class="footer-tagline">Bli en del av nettverket, ta kontakt med oss!</div>
       <div class="footer-right">
         <div class="footer-nav">
-          <a href="NGF.html">Hjem</a>
+          <a href="index.html">Hjem</a>
           <a href="om.html">Om</a>
           <a href="eventer.html">Eventer</a>
           <a href="arkiv.html">Arkiv</a>

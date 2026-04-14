@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meld deg på | Neste Generasjons Forsikringsformidlere</title>
+  <title>Sign Up | NextGen Insurance Collective</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -46,118 +46,39 @@
     .lang-dropdown a.active { color: var(--navy); font-weight: 700; }
 
     /* PAGE LAYOUT */
-    .page-wrap {
-      min-height: calc(100vh - 68px);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
+    .page-wrap { min-height: calc(100vh - 68px); display: grid; grid-template-columns: 1fr 1fr; }
 
     /* LEFT PANEL */
-    .left-panel {
-      background: linear-gradient(160deg, var(--navy) 0%, var(--teal) 100%);
-      padding: 72px 56px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    .left-panel { background: linear-gradient(160deg, var(--navy) 0%, var(--teal) 100%); padding: 72px 56px; display: flex; flex-direction: column; justify-content: center; }
     .left-panel h1 { font-size: 36px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 20px; }
     .left-panel p { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.75; margin-bottom: 12px; }
     .checklist { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
     .checklist-item { display: flex; align-items: flex-start; gap: 12px; }
-    .checklist-item .check {
-      width: 22px; height: 22px; border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-top: 2px;
-    }
+    .checklist-item .check { width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
     .checklist-item .check svg { width: 12px; height: 12px; }
     .checklist-item span { font-size: 15px; color: rgba(255,255,255,0.9); line-height: 1.5; }
 
-    /* RIGHT PANEL, FORM */
-    .right-panel {
-      background: var(--white);
-      padding: 72px 56px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    /* RIGHT PANEL */
+    .right-panel { background: var(--white); padding: 72px 56px; display: flex; flex-direction: column; justify-content: center; }
     .form-header { margin-bottom: 36px; }
     .form-header h2 { font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
     .form-header p { font-size: 14px; color: var(--muted); }
 
     .form-group { margin-bottom: 20px; }
-    label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 6px;
-      letter-spacing: 0.02em;
-    }
+    label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px; letter-spacing: 0.02em; }
     label .req { color: var(--accent); margin-left: 2px; }
-    input, select {
-      width: 100%;
-      padding: 12px 14px;
-      font-size: 15px;
-      font-family: inherit;
-      color: var(--text);
-      background: var(--white);
-      border: 1.5px solid var(--gray-line);
-      border-radius: 6px;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      appearance: none;
-    }
-    input:focus, select:focus {
-      border-color: var(--teal);
-      box-shadow: 0 0 0 3px rgba(14,143,160,0.12);
-    }
+    input { width: 100%; padding: 12px 14px; font-size: 15px; font-family: inherit; color: var(--text); background: var(--white); border: 1.5px solid var(--gray-line); border-radius: 6px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(14,143,160,0.12); }
     input::placeholder { color: #aab0be; }
-    .select-wrap { position: relative; }
-    .select-wrap::after {
-      content: '';
-      position: absolute;
-      right: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 0; height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 6px solid var(--muted);
-      pointer-events: none;
-    }
 
-    .submit-btn {
-      width: 100%;
-      background: var(--accent);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      font-family: inherit;
-      padding: 14px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      margin-top: 8px;
-      letter-spacing: 0.02em;
-    }
+    .submit-btn { width: 100%; background: var(--accent); color: #fff; font-size: 15px; font-weight: 700; font-family: inherit; padding: 14px; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 8px; letter-spacing: 0.02em; }
     .submit-btn:hover { background: var(--accent-h); transform: translateY(-1px); }
     .submit-btn:active { transform: translateY(0); }
 
-    .form-note {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 14px;
-      line-height: 1.6;
-    }
+    .form-note { font-size: 12px; color: var(--muted); margin-top: 14px; line-height: 1.6; }
 
     /* SUCCESS STATE */
-    .success-state {
-      display: none;
-      text-align: center;
-      padding: 40px 0;
-    }
+    .success-state { display: none; text-align: center; padding: 40px 0; }
     .success-state .icon { font-size: 56px; margin-bottom: 20px; }
     .success-state h3 { font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
     .success-state p { font-size: 15px; color: var(--muted); line-height: 1.7; }
@@ -189,15 +110,15 @@
 
   <header>
     <div class="header-inner">
-      <a href="index.html" class="logo">
+      <a href="index-en.html" class="logo">
         <img src="logo.png" alt="NGF" style="height:32px; width:auto; display:block;">
-        Neste Generasjons <span>Forsikringsformidlere</span>
+        NextGen <span>Insurance Collective</span>
       </a>
       <nav>
-        <a href="index.html">Hjem</a>
-        <a href="om.html">Om</a>
-        <a href="eventer.html">Eventer</a>
-        <a href="arkiv.html">Arkiv</a>
+        <a href="index-en.html">Home</a>
+        <a href="om-en.html">About</a>
+        <a href="eventer-en.html">Events</a>
+        <a href="arkiv-en.html">Archive</a>
       </nav>
       <div class="social-links">
         <a href="#" aria-label="Instagram">
@@ -210,15 +131,15 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
       </div>
-      <a href="meld-deg-pa.html" class="header-cta">Meld deg på</a>
+      <a href="meld-deg-pa-en.html" class="header-cta">Sign Up</a>
       <div class="lang-switch" id="langSwitch">
         <button class="lang-btn" onclick="toggleLang()">
-          NO
+          ENG
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 5 7 9 3"/></svg>
         </button>
         <div class="lang-dropdown">
-          <a href="meld-deg-pa.html" class="active">NO</a>
-          <a href="meld-deg-pa-en.html">ENG</a>
+          <a href="meld-deg-pa.html">NO</a>
+          <a href="meld-deg-pa-en.html" class="active">ENG</a>
         </div>
       </div>
     </div>
@@ -232,33 +153,33 @@
 
     <!-- LEFT: INFO PANEL -->
     <div class="left-panel">
-      <h1>Bli en del av nettverket</h1>
-      <p>Det er helt gratis å melde seg på, ingen forpliktelser.</p>
+      <h1>Join the network</h1>
+      <p>It is completely free to sign up, no obligations.</p>
 
       <div class="checklist">
         <div class="checklist-item">
           <div class="check">
             <svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg>
           </div>
-          <span>Møt andre unge fagpersoner innen forsikring</span>
+          <span>Meet other young professionals in insurance</span>
         </div>
         <div class="checklist-item">
           <div class="check">
             <svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg>
           </div>
-          <span>Få invitasjoner til kommende eventer og afterwork</span>
+          <span>Receive invitations to upcoming events and afterworks</span>
         </div>
         <div class="checklist-item">
           <div class="check">
             <svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg>
           </div>
-          <span>Bygg relasjoner på tvers av selskaper og roller</span>
+          <span>Build relationships across companies and roles</span>
         </div>
         <div class="checklist-item">
           <div class="check">
             <svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg>
           </div>
-          <span>Gratis og uten forpliktelser</span>
+          <span>Free and without obligations</span>
         </div>
       </div>
     </div>
@@ -267,41 +188,41 @@
     <div class="right-panel">
       <div id="form-container">
         <div class="form-header">
-          <h2>Registrer deg</h2>
-          <p>Fyll ut skjemaet under så hører du fra oss.</p>
+          <h2>Register</h2>
+          <p>Fill in the form below and we will be in touch.</p>
         </div>
 
         <form id="signup-form" onsubmit="handleSubmit(event)" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
 
           <div class="form-group">
-            <label for="fullname">Fullt navn <span class="req">*</span></label>
-            <input type="text" id="fullname" name="fullname" placeholder="Ola Nordmann" required />
+            <label for="fullname">Full name <span class="req">*</span></label>
+            <input type="text" id="fullname" name="fullname" placeholder="Jane Smith" required />
           </div>
 
           <div class="form-group">
-            <label for="phone">Telefonnummer <span class="req">*</span></label>
+            <label for="phone">Phone number <span class="req">*</span></label>
             <input type="tel" id="phone" name="phone" placeholder="+47 000 00 000" required />
           </div>
 
           <div class="form-group">
-            <label for="email">Jobb-e-post <span class="req">*</span></label>
-            <input type="email" id="email" name="email" placeholder="navn@selskap.no" required />
+            <label for="email">Work email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="name@company.com" required />
           </div>
 
           <div class="form-group">
-            <label for="company">Arbeidsgiver <span class="req">*</span></label>
-            <input type="text" id="company" name="company" placeholder="Navn på selskap" required />
+            <label for="company">Employer <span class="req">*</span></label>
+            <input type="text" id="company" name="company" placeholder="Company name" required />
           </div>
 
           <div class="form-group">
-            <label for="role">Rolle i organisasjonen <span class="req">*</span></label>
-            <input type="text" id="role" name="role" placeholder="Din rolle" required />
+            <label for="role">Role in organisation <span class="req">*</span></label>
+            <input type="text" id="role" name="role" placeholder="Your role" required />
           </div>
 
-          <button type="submit" class="submit-btn">Send inn påmelding</button>
+          <button type="submit" class="submit-btn">Submit registration</button>
 
           <p class="form-note">
-            Vi bruker informasjonen din til å kontakte deg om fremtidige arrangementer.
+            We use your information to contact you about upcoming events.
           </p>
 
         </form>
@@ -310,9 +231,9 @@
       <!-- SUCCESS MESSAGE -->
       <div class="success-state" id="success-state">
         <div class="icon">🎉</div>
-        <h3>Takk for påmeldingen!</h3>
-        <p>Vi har mottatt din registrering og tar kontakt med deg snart. Velkommen til Neste Generasjons Forsikringsformidlere!</p>
-        <a href="index.html">Tilbake til forsiden</a>
+        <h3>Thank you for signing up!</h3>
+        <p>We have received your registration and will be in touch soon. Welcome to NextGen Insurance Collective!</p>
+        <a href="index-en.html">Back to home</a>
       </div>
     </div>
 
@@ -321,12 +242,12 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-nav">
-        <a href="index.html">Hjem</a>
-        <a href="om.html">Om</a>
-        <a href="eventer.html">Eventer</a>
-        <a href="arkiv.html">Arkiv</a>
+        <a href="index-en.html">Home</a>
+        <a href="om-en.html">About</a>
+        <a href="eventer-en.html">Events</a>
+        <a href="arkiv-en.html">Archive</a>
       </div>
-      <div class="footer-copy">© 2026 Neste Generasjons Forsikringsformidlere. Alle rettigheter forbeholdt.</div>
+      <div class="footer-copy">© 2026 NextGen Insurance Collective. All rights reserved.</div>
     </div>
   </footer>
 
@@ -359,7 +280,7 @@
         document.getElementById('form-container').style.display = 'none';
         document.getElementById('success-state').style.display = 'block';
       } else {
-        alert('Noe gikk galt. Prøv igjen eller send e-post til partnerships@ngf.no');
+        alert('Something went wrong. Please try again or email partnerships@ngf.no');
       }
     }
   </script>

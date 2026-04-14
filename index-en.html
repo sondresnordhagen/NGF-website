@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextGen Insurance Collective</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:     #1b3d6e;
+      --navy-dark:#132d52;
+      --blue-mid: #2563a8;
+      --accent:   #e8612a;
+      --accent-h: #cf5120;
+      --teal:     #0e8fa0;
+      --gray-bg:  #f4f5f7;
+      --gray-line:#e2e4e8;
+      --text:     #1a1a2e;
+      --muted:    #5a6072;
+      --white:    #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* HEADER */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .header-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.3em;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    .logo span { color: var(--teal); }
+    nav { display: flex; align-items: center; gap: 6px; flex: 1; }
+    nav a {
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 6px 10px;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--navy); background: var(--gray-bg); }
+    .header-cta {
+      background: var(--accent);
+      color: #fff;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 9px 18px;
+      border-radius: 4px;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .header-cta:hover { background: var(--accent-h); color: #fff; }
+
+    /* LANGUAGE SWITCHER */
+    .lang-switch { position: relative; }
+    .lang-btn {
+      background: transparent;
+      border: 1.5px solid var(--gray-line);
+      color: var(--navy);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      font-family: inherit;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .lang-btn:hover { border-color: var(--navy); background: var(--gray-bg); }
+    .lang-btn svg { transition: transform 0.2s; }
+    .lang-switch.open .lang-btn svg { transform: rotate(180deg); }
+    .lang-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--gray-line);
+      border-radius: 4px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      min-width: 80px;
+      z-index: 200;
+    }
+    .lang-switch.open .lang-dropdown { display: block; }
+    .lang-dropdown a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-dropdown a:hover { background: var(--gray-bg); color: var(--navy); }
+    .lang-dropdown a.active { color: var(--navy); font-weight: 700; }
+
+    .social-links { display: flex; gap: 10px; align-items: center; }
+    .social-links a { color: var(--muted); font-size: 14px; transition: color 0.2s; padding: 4px; }
+    .social-links a:hover { color: var(--navy); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 440px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('opera.jpg') center center / cover no-repeat;
+    }
+    .hero-skyline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      opacity: 0.15;
+    }
+    .hero-water {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to top, rgba(0,0,0,0.35), transparent);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,25,50,0.7) 0%, rgba(10,25,50,0.2) 60%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+      width: 100%;
+    }
+    .hero-content h1 { font-size: 42px; font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 14px; }
+    .hero-content p { font-size: 16px; color: rgba(255,255,255,0.85); max-width: 520px; line-height: 1.65; }
+
+    /* SECTIONS */
+    .section { padding: 64px 24px; }
+    .section-alt { background: var(--gray-bg); }
+    .container { max-width: 1160px; margin: 0 auto; }
+    h2 { font-size: 28px; font-weight: 700; color: var(--navy); margin-bottom: 16px; line-height: 1.25; }
+    .lead { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.7; text-align: justify; }
+
+    /* BTN */
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 12px 26px;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 24px;
+    }
+    .btn:hover { background: var(--accent-h); transform: translateY(-1px); color: #fff; }
+    .btn-outline { background: transparent; border: 2px solid var(--navy); color: var(--navy); }
+    .btn-outline:hover { background: var(--navy); color: #fff; }
+
+    /* NEWS */
+    .news-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 36px; }
+    .news-card { border-radius: 6px; overflow: hidden; background: var(--white); border: 1px solid var(--gray-line); transition: box-shadow 0.2s, transform 0.2s; cursor: pointer; }
+    .news-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); transform: translateY(-3px); }
+    .news-img { height: 130px; overflow: hidden; background: var(--gray-bg); position: relative; }
+    .news-img-inner { width: 100%; height: 100%; background: linear-gradient(135deg, #1b3d6e 0%, #2563a8 100%); display: flex; align-items: center; justify-content: center; opacity: 0.8; }
+    .news-img-inner.alt1 { background: linear-gradient(135deg, #0e8fa0 0%, #2563a8 100%); }
+    .news-img-inner.alt2 { background: linear-gradient(135deg, #1b3d6e 0%, #0e8fa0 100%); }
+    .news-img-inner.alt3 { background: linear-gradient(135deg, #2563a8 0%, #1b3d6e 100%); }
+    .news-tag { position: absolute; top: 10px; left: 10px; background: var(--teal); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 3px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .news-body { padding: 16px; }
+    .news-body h3 { font-size: 13.5px; font-weight: 600; color: var(--navy); line-height: 1.45; margin-bottom: 8px; }
+    .news-date { font-size: 11.5px; color: var(--muted); font-weight: 500; }
+    .news-footer { text-align: center; margin-top: 36px; }
+
+    /* EVENTS */
+    .events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
+    .event-card { border: 1px solid var(--gray-line); border-radius: 6px; overflow: hidden; background: var(--white); transition: box-shadow 0.2s, transform 0.2s; }
+    .event-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); transform: translateY(-3px); }
+    .event-img { height: 160px; background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%); position: relative; overflow: hidden; }
+    .event-img-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0.3; }
+    .event-date-badge { position: absolute; top: 14px; left: 14px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 3px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .event-body { padding: 20px; }
+    .event-body h3 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 8px; line-height: 1.4; }
+    .event-body p { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+    .event-meta { display: flex; gap: 16px; margin-top: 14px; font-size: 12px; color: var(--muted); font-weight: 500; }
+    .event-meta span::before { content: '📍 '; }
+    .event-meta span:last-child::before { content: '🕐 '; }
+
+    /* PARTNERSHIP */
+    .partnership-section { padding: 64px 24px; }
+    .partnership-inner { max-width: 680px; }
+    .partnership-inner p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 12px; text-align: justify; }
+    .partnership-inner a.email { color: var(--teal); font-weight: 600; }
+    .partnership-inner a.email:hover { text-decoration: underline; }
+
+    /* CONTACT CTA */
+    .contact-cta { text-align: center; padding: 72px 24px; border-top: 1px solid var(--gray-line); }
+    .contact-cta .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+    .contact-cta h2 { font-size: 36px; font-weight: 700; color: var(--navy); margin-bottom: 0; }
+
+    /* FOOTER */
+    footer { background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%); color: rgba(255,255,255,0.9); padding: 48px 24px 32px; }
+    .footer-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .footer-tagline { font-size: 22px; font-weight: 700; color: #fff; max-width: 360px; line-height: 1.3; }
+    .footer-right { text-align: right; }
+    .footer-nav { display: flex; gap: 20px; justify-content: flex-end; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-nav a { font-size: 13px; color: rgba(255,255,255,0.75); transition: color 0.2s; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+    .section-divider { border: none; border-top: 1px solid var(--gray-line); margin: 0; }
+
+    @media (max-width: 900px) {
+      .events-grid { grid-template-columns: repeat(2, 1fr); }
+      .news-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { display: none; }
+    }
+    @media (max-width: 600px) {
+      .events-grid { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      .hero-content h1 { font-size: 28px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-right { text-align: center; }
+      .footer-nav { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index-en.html" class="logo">
+        <img src="logo.png" alt="NGF" style="height:32px; width:auto; display:block;">
+        NextGen <span>Insurance Collective</span>
+      </a>
+      <nav>
+        <a href="index-en.html" class="active">Home</a>
+        <a href="om-en.html">About</a>
+        <a href="eventer-en.html">Events</a>
+        <a href="arkiv-en.html">Archive</a>
+      </nav>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <a href="meld-deg-pa-en.html" class="header-cta">Sign Up</a>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" onclick="toggleLang()">
+          ENG
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 5 7 9 3"/></svg>
+        </button>
+        <div class="lang-dropdown">
+          <a href="index.html">NO</a>
+          <a href="index-en.html" class="active">ENG</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <script>
+    function toggleLang() { document.getElementById('langSwitch').classList.toggle('open'); }
+    document.addEventListener('click', function(e) { var sw = document.getElementById('langSwitch'); if (!sw.contains(e.target)) sw.classList.remove('open'); });
+  </script>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <svg class="hero-skyline" viewBox="0 0 1440 200" preserveAspectRatio="none" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,160 L0,200 L1440,200 L1440,160 L1380,160 L1380,100 L1360,100 L1360,80 L1340,80 L1340,100 L1320,100 L1320,130 L1300,130 L1300,90 L1280,90 L1280,70 L1270,70 L1270,90 L1260,90 L1260,130 L1240,130 L1240,110 L1220,110 L1220,90 L1200,90 L1200,110 L1180,110 L1180,140 L1160,140 L1160,80 L1150,80 L1150,60 L1140,60 L1140,80 L1130,80 L1130,140 L1100,140 L1100,100 L1080,100 L1080,85 L1060,85 L1060,100 L1040,100 L1040,140 L1020,140 L1020,115 L1000,115 L1000,95 L980,95 L980,115 L960,115 L960,140 L940,140 L940,105 L920,105 L920,85 L910,85 L910,105 L900,105 L900,140 L880,140 L880,120 L860,120 L860,100 L850,100 L850,75 L840,75 L840,100 L830,100 L830,120 L820,120 L800,140 L780,140 L780,110 L760,110 L760,90 L750,90 L750,70 L740,70 L740,90 L730,90 L730,110 L720,110 L700,140 L680,140 L680,115 L660,115 L660,95 L650,95 L650,115 L640,115 L640,140 L620,140 L620,120 L600,120 L600,100 L580,100 L580,120 L560,120 L540,140 L520,140 L520,110 L500,110 L500,85 L490,85 L490,65 L480,65 L480,85 L470,85 L470,110 L460,110 L440,140 L420,140 L420,115 L400,115 L400,95 L390,95 L390,115 L380,115 L380,140 L360,140 L360,105 L340,105 L340,80 L330,80 L330,60 L320,60 L320,80 L310,80 L310,105 L300,105 L280,140 L260,140 L260,110 L240,110 L240,90 L230,90 L230,110 L220,110 L200,140 L180,140 L180,115 L160,115 L160,95 L150,95 L150,115 L140,115 L140,140 L120,140 L120,120 L100,120 L100,100 L80,100 L80,120 L60,120 L40,140 L20,140 L20,160 Z"/>
+      </svg>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-water"></div>
+    <div class="hero-content container">
+      <h1>NextGen Insurance Collective</h1>
+      <p style="font-size:20px; font-weight:600; color:rgba(255,255,255,0.95); margin-bottom:16px;">A new initiative for young professionals in insurance intermediation</p>
+      <p style="text-align:justify;">We have identified a clear need for a shared meeting place for young professionals working in insurance. That is why we are launching a new network where young talents (35 and under) can meet, learn, and lift each other up. The goal is to create an environment for professional development and relationship-building across companies and roles.</p>
+    </div>
+  </section>
+
+  <!-- UPCOMING EVENTS -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Upcoming Events</h2>
+      <div class="events-grid">
+        <a href="eventer-en.html" class="event-card" style="display:block; text-decoration:none; color:inherit;">
+          <div class="event-img" style="background: linear-gradient(135deg, #1b3d6e 0%, #0e8fa0 100%);">
+            <div class="event-img-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <span class="event-date-badge">7 May</span>
+          </div>
+          <div class="event-body">
+            <h3>Afterwork</h3>
+            <p>Stop by after work and meet old and new acquaintances. No agenda, just good vibes and great conversations.</p>
+            <div class="event-meta">
+              <span>Oslo</span>
+              <span>Thursday 7 May</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="eventer-en.html" class="event-card" style="display:block; text-decoration:none; color:inherit;">
+          <div class="event-img" style="background: linear-gradient(135deg, #0e8fa0 0%, #1b3d6e 100%);">
+            <div class="event-img-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <span class="event-date-badge">20 Aug</span>
+          </div>
+          <div class="event-body">
+            <h3>Afterwork</h3>
+            <p>Stop by after work and meet old and new acquaintances. No agenda, just good vibes and great conversations.</p>
+            <div class="event-meta">
+              <span>Oslo</span>
+              <span>Thursday 20 August</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="eventer-en.html" class="event-card" style="display:block; text-decoration:none; color:inherit;">
+          <div class="event-img" style="background: linear-gradient(135deg, #2563a8 0%, #0e8fa0 100%);">
+            <div class="event-img-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <span class="event-date-badge">23 Oct</span>
+          </div>
+          <div class="event-body">
+            <h3>Afterwork</h3>
+            <p>Stop by after work and meet old and new acquaintances. No agenda, just good vibes and great conversations.</p>
+            <div class="event-meta">
+              <span>Oslo</span>
+              <span>Thursday 23 October</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- POSTS AND NEWS -->
+  <section class="section" id="news">
+    <div class="container">
+      <h2>Posts and News</h2>
+      <div class="news-grid">
+
+        <!-- Add new posts here — copy a .news-card block and update the content -->
+
+      </div>
+      <div class="news-footer">
+        <a href="arkiv-en.html" class="btn btn-outline">See all posts</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="section section-alt partnership-section">
+    <div class="container">
+      <div class="partnership-inner">
+        <h2>Our Partners</h2>
+        <p>Are you interested in securing the future of the insurance industry?</p>
+        <p>NextGen Insurance Collective invites you to become a partner. Our community of young professionals is the perfect place to showcase your organisation's commitment to developing the next generation of leaders.</p>
+        <p>Your contributions will strengthen our events and initiatives, and help us provide valuable networking and learning opportunities. Partners can participate in various ways, from event sponsorship to knowledge sharing.</p>
+        <p>Interested in exploring this opportunity? Get in touch at <a href="mailto:partnerships@ngf.no" class="email">partnerships@ngf.no</a> and we will be in touch soon.</p>
+        <p>Join us in shaping the future of the insurance industry.</p>
+        <a href="mailto:partnerships@ngf.no" class="btn">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="contact-cta">
+    <div class="eyebrow">Contact NextGen Insurance Collective</div>
+    <h2>We would love to hear from you!</h2>
+    <a href="mailto:partnerships@ngf.no" class="btn" style="margin-top:28px;">Get in Touch</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-tagline">Join the network, get in touch with us!</div>
+      <div class="footer-right">
+        <div class="footer-nav">
+          <a href="index-en.html">Home</a>
+          <a href="om-en.html">About</a>
+          <a href="eventer-en.html">Events</a>
+          <a href="arkiv-en.html">Archive</a>
+        </div>
+        <div class="footer-copy">© 2026 NextGen Insurance Collective. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

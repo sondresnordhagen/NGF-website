@@ -100,6 +100,52 @@
     }
     .header-cta:hover { background: var(--accent-h); color: #fff; }
 
+    /* LANGUAGE SWITCHER */
+    .lang-switch { position: relative; }
+    .lang-btn {
+      background: transparent;
+      border: 1.5px solid var(--gray-line);
+      color: var(--navy);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      font-family: inherit;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .lang-btn:hover { border-color: var(--navy); background: var(--gray-bg); }
+    .lang-btn svg { transition: transform 0.2s; }
+    .lang-switch.open .lang-btn svg { transform: rotate(180deg); }
+    .lang-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--gray-line);
+      border-radius: 4px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      min-width: 80px;
+      z-index: 200;
+    }
+    .lang-switch.open .lang-dropdown { display: block; }
+    .lang-dropdown a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-dropdown a:hover { background: var(--gray-bg); color: var(--navy); }
+    .lang-dropdown a.active { color: var(--navy); font-weight: 700; }
+
     .social-links { display: flex; gap: 10px; align-items: center; }
     .social-links a {
       color: var(--muted);
@@ -572,6 +618,7 @@
     <div class="header-inner">
       <!-- Logo -->
       <a href="#" class="logo">
+        <img src="logo.png" alt="NGF" style="height:32px; width:auto; display:block;">
         Neste Generasjons <span>Forsikringsformidlere</span>
       </a>
 
@@ -599,8 +646,27 @@
       </div>
 
       <a href="meld-deg-pa.html" class="header-cta">Meld deg på</a>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" onclick="toggleLang()">
+          NO
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 3 5 7 9 3"/></svg>
+        </button>
+        <div class="lang-dropdown">
+          <a href="index.html" class="active">NO</a>
+          <a href="index-en.html">ENG</a>
+        </div>
+      </div>
     </div>
   </header>
+  <script>
+    function toggleLang() {
+      document.getElementById('langSwitch').classList.toggle('open');
+    }
+    document.addEventListener('click', function(e) {
+      var sw = document.getElementById('langSwitch');
+      if (!sw.contains(e.target)) sw.classList.remove('open');
+    });
+  </script>
 
   <!-- HERO -->
   <section class="hero">
@@ -631,8 +697,8 @@
     <div class="hero-water"></div>
     <div class="hero-content container">
       <h1>Neste Generasjons Forsikringsformidlere</h1>
-      <p style="font-size:20px; font-weight:600; color:rgba(255,255,255,0.95); margin-bottom:16px;">Et nytt initiativ for unge som jobber med forsikringsformidling</p>
-      <p style="text-align:justify;">Vi har sett et tydelig behov for et felles møtepunkt for unge som jobber innen forsikring. Derfor starter vi en ny nettverksgruppe hvor "unge talenter" (35 og under) kan møtes, lære og løfte hverandre. Målet er å skape et miljø for faglig utvikling og relasjonsbygging på tvers av selskaper og roller.</p>
+      <p style="font-size:20px; font-weight:600; color:rgba(255,255,255,0.95); margin-bottom:16px;">En arena for unge som jobber med forsikringsformidling</p>
+      <p style="text-align:justify;">Vi har sett et tydelig behov for et felles møtepunkt for unge som jobber innen forsikring. Derfor starter vi en nettverksgruppe hvor "unge talenter" (35 og under) kan møtes, lære og løfte hverandre. Målet er å skape et miljø for faglig utvikling og relasjonsbygging på tvers av selskaper og roller.</p>
     </div>
   </section>
 
@@ -650,11 +716,45 @@
             <span class="event-date-badge">7. mai</span>
           </div>
           <div class="event-body">
-            <h3>Afterwork, Første Samling</h3>
+            <h3>Afterwork</h3>
             <p>Stikk innom etter jobb og møt gamle og nye bekjentskaper. Ingen agenda, bare god stemning og gode samtaler.</p>
             <div class="event-meta">
               <span>Oslo</span>
               <span>Torsdag 7. mai</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="eventer.html" class="event-card" style="display:block; text-decoration:none; color:inherit;">
+          <div class="event-img" style="background: linear-gradient(135deg, #0e8fa0 0%, #1b3d6e 100%);">
+            <div class="event-img-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <span class="event-date-badge">20. aug</span>
+          </div>
+          <div class="event-body">
+            <h3>Afterwork</h3>
+            <p>Stikk innom etter jobb og møt gamle og nye bekjentskaper. Ingen agenda, bare god stemning og gode samtaler.</p>
+            <div class="event-meta">
+              <span>Oslo</span>
+              <span>Torsdag 20. august</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="eventer.html" class="event-card" style="display:block; text-decoration:none; color:inherit;">
+          <div class="event-img" style="background: linear-gradient(135deg, #2563a8 0%, #0e8fa0 100%);">
+            <div class="event-img-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <span class="event-date-badge">23. okt</span>
+          </div>
+          <div class="event-body">
+            <h3>Afterwork</h3>
+            <p>Stikk innom etter jobb og møt gamle og nye bekjentskaper. Ingen agenda, bare god stemning og gode samtaler.</p>
+            <div class="event-meta">
+              <span>Oslo</span>
+              <span>Torsdag 23. oktober</span>
             </div>
           </div>
         </a>
@@ -665,29 +765,17 @@
 
   <hr class="section-divider" />
 
-  <!-- JOIN SECTION -->
-  <section class="section" id="join">
+  <!-- INNLEGG OG NYHETER -->
+  <section class="section" id="nyheter">
     <div class="container">
-      <div class="join-section">
-        <div class="join-text">
-          <h2>Bli med i Neste Generasjons Forsikringsformidlere</h2>
-          <p class="lead">Vi ser alltid etter nye medlemmer og ønsker deg hjertelig velkommen på neste arrangement. Møt opp og knytt kontakt med andre unge fagpersoner innen forsikring.</p>
-          <a href="#" class="btn">Bli med</a>
-        </div>
-        <div class="join-stats">
-          <div class="stat">
-            <div class="stat-num">600+</div>
-            <div class="stat-label">Aktive Medlemmer</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">20+</div>
-            <div class="stat-label">Eventer / År</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">15+</div>
-            <div class="stat-label">Partnere</div>
-          </div>
-        </div>
+      <h2>Innlegg og Nyheter</h2>
+      <div class="news-grid">
+
+        <!-- Legg til nye innlegg her — kopier et .news-card-blokk og oppdater innholdet -->
+
+      </div>
+      <div class="news-footer">
+        <a href="arkiv.html" class="btn btn-outline">Se alle innlegg</a>
       </div>
     </div>
   </section>
@@ -711,7 +799,7 @@
   <section class="contact-cta">
     <div class="eyebrow">Ta kontakt med Neste Generasjons Forsikringsformidlere</div>
     <h2>Vi vil gjerne høre fra deg!</h2>
-    <a href="#" class="btn" style="margin-top:28px;">Kontakt Oss</a>
+    <a href="mailto:partnerships@ngf.no" class="btn" style="margin-top:28px;">Ta Kontakt</a>
   </section>
 
   <!-- FOOTER -->
